@@ -13,7 +13,7 @@ function App() {
         <Header />
         <Route
           exact
-          path="/react-demo/sv" component={SortingVisualizer}
+          path="/react-demo" component={SortingVisualizer}
         />
         <Route path="/react-demo/ml" component={MachineLearning} />
 
