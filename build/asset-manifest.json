@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/sorting-visualizer/static/css/main.f2a9ee5b.chunk.css",
-    "main.js": "/sorting-visualizer/static/js/main.56c47390.chunk.js",
-    "main.js.map": "/sorting-visualizer/static/js/main.56c47390.chunk.js.map",
-    "runtime-main.js": "/sorting-visualizer/static/js/runtime-main.e68b5cdc.js",
-    "runtime-main.js.map": "/sorting-visualizer/static/js/runtime-main.e68b5cdc.js.map",
-    "static/css/2.de424728.chunk.css": "/sorting-visualizer/static/css/2.de424728.chunk.css",
-    "static/js/2.b6c8b02b.chunk.js": "/sorting-visualizer/static/js/2.b6c8b02b.chunk.js",
-    "static/js/2.b6c8b02b.chunk.js.map": "/sorting-visualizer/static/js/2.b6c8b02b.chunk.js.map",
-    "index.html": "/sorting-visualizer/index.html",
-    "precache-manifest.bdc726395d30482fa56ffaa79179f48d.js": "/sorting-visualizer/precache-manifest.bdc726395d30482fa56ffaa79179f48d.js",
-    "service-worker.js": "/sorting-visualizer/service-worker.js",
-    "static/css/2.de424728.chunk.css.map": "/sorting-visualizer/static/css/2.de424728.chunk.css.map",
-    "static/css/main.f2a9ee5b.chunk.css.map": "/sorting-visualizer/static/css/main.f2a9ee5b.chunk.css.map"
+    "main.css": "/react-demo/static/css/main.f2a9ee5b.chunk.css",
+    "main.js": "/react-demo/static/js/main.5b2700cf.chunk.js",
+    "main.js.map": "/react-demo/static/js/main.5b2700cf.chunk.js.map",
+    "runtime-main.js": "/react-demo/static/js/runtime-main.85f15630.js",
+    "runtime-main.js.map": "/react-demo/static/js/runtime-main.85f15630.js.map",
+    "static/css/2.28c4475d.chunk.css": "/react-demo/static/css/2.28c4475d.chunk.css",
+    "static/js/2.43aa4b57.chunk.js": "/react-demo/static/js/2.43aa4b57.chunk.js",
+    "static/js/2.43aa4b57.chunk.js.map": "/react-demo/static/js/2.43aa4b57.chunk.js.map",
+    "index.html": "/react-demo/index.html",
+    "precache-manifest.aa1e660e69f1d0926ef4f35b74e9736c.js": "/react-demo/precache-manifest.aa1e660e69f1d0926ef4f35b74e9736c.js",
+    "service-worker.js": "/react-demo/service-worker.js",
+    "static/css/2.28c4475d.chunk.css.map": "/react-demo/static/css/2.28c4475d.chunk.css.map",
+    "static/css/main.f2a9ee5b.chunk.css.map": "/react-demo/static/css/main.f2a9ee5b.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.e68b5cdc.js",
-    "static/css/2.de424728.chunk.css",
-    "static/js/2.b6c8b02b.chunk.js",
+    "static/js/runtime-main.85f15630.js",
+    "static/css/2.28c4475d.chunk.css",
+    "static/js/2.43aa4b57.chunk.js",
     "static/css/main.f2a9ee5b.chunk.css",
-    "static/js/main.56c47390.chunk.js"
+    "static/js/main.5b2700cf.chunk.js"
   ]
 }

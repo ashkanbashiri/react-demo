@@ -5,10 +5,10 @@ function Header() {
   return (
     <header style={headerStyle}>
       <h1>Ashkan's React App</h1>
-      <Link style={linkStyle} to="/">Sorting-Visualizer </Link>
-      | <Link style={linkStyle} to="/ml">Traffic Control </Link>
-      | <Link style={linkStyle} to="/ml">Image Classification </Link>
-      | <Link style={linkStyle} to="/ml">DataScience Projects </Link>
+      <Link style={linkStyle} to="/react-demo/sv">Sorting-Visualizer </Link>
+      | <Link style={linkStyle} to="/react-demo/ml">Traffic Control </Link>
+      | <Link style={linkStyle} to="/react-demo/ml">Image Classification </Link>
+      | <Link style={linkStyle} to="/react-demo/ml">DataScience Projects </Link>
     </header>
   )
 }

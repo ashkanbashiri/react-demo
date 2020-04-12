@@ -13,9 +13,9 @@ function App() {
         <Header />
         <Route
           exact
-          path="/" component={SortingVisualizer}
+          path="/react-demo/sv" component={SortingVisualizer}
         />
-        <Route path="/ml" component={MachineLearning} />
+        <Route path="/react-demo/ml" component={MachineLearning} />
 
       </Router>
     </div>
