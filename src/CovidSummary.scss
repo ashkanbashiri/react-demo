@@ -1,0 +1,86 @@
+.grid-container-summary {
+  min-height: calc(100vh - 70px);
+  display: grid;
+  grid-template-areas:
+    "headerright header headerleft"
+    "left middle right"
+    "footer footer footer ";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: 1fr 3fr 1fr;
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.left-summary,
+.middle-summary,
+.right-summary {
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
+  //margin: 100px auto;
+  background: white;
+  border-radius: 5px;
+  margin: 5px;
+
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.footer-summary {
+  grid-area: footer;
+}
+.selector1-summary {
+  grid-area: selector1;
+
+  cursor: pointer;
+}
+.selector2-summary {
+  grid-area: selector2;
+
+  cursor: pointer;
+}
+
+/* Style the left column */
+.left-summary {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle-summary {
+  cursor: pointer;
+
+  grid-area: middle;
+  min-height: 60vh;
+  min-width: 60vw;
+  max-width: 80vw;
+}
+.header-summary {
+  grid-area: header;
+  color: var(--foreground) !important;
+  padding: 10px;
+  text-align: center;
+}
+
+.header-summary > div {
+  display: inline-block;
+  display: -moz-inline-box;
+  *display: inline; /* For IE7 */
+  zoom: 1; /* Trigger hasLayout */
+  width: 20%;
+  text-align: center;
+}
+
+/* Style the right column */
+.right-summary {
+  grid-area: right;
+}
+.country-btn {
+  width: 50px;
+}
+
+.chart {
+  width: 500px;
+  background-color: blanchedalmond;
+}

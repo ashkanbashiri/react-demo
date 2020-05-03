@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-areas:
+      "header header header header header header"
+      "left left left left left left"
+      "middle middle middle middle middle middle"
+      "right right right right right right"
+      "footer footer footer footer footer footer";
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: var(--ff-body) !important;
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+:root {
+  --clr-light: #ddd;
+  --clr-dark: #121312;
+  --clr-primary: #dbffa2;
+  --clr-secondary: #c3fcf2;
+  --clr-accent: #ff7750;
+
+  --foreground: var(--clr-dark);
+  --background: var(--clr-light);
+
+  --ff-title: "Playfair Display", serif;
+  --ff-body: "Baloo Tamma 2", cursive;
+}
+
+.darkmode {
+  --clr-light: #ffffff;
+  --clr-dark: #121312;
+  --clr-primary: #202302;
+  --clr-secondary: #00100d;
+  --clr-accent: #ff7750;
+
+  --foreground: var(--clr-light);
+  --background: var(--clr-dark);
+}

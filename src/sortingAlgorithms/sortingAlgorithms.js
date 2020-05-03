@@ -11,7 +11,7 @@ function mergeSortHelper(
   startIdx,
   endIdx,
   auxiliaryArray,
-  animations,
+  animations
 ) {
   if (startIdx === endIdx) return;
   const middleIdx = Math.floor((startIdx + endIdx) / 2);
@@ -26,7 +26,7 @@ function doMerge(
   middleIdx,
   endIdx,
   auxiliaryArray,
-  animations,
+  animations
 ) {
   let k = startIdx;
   let i = startIdx;
@@ -98,7 +98,7 @@ function partition(arr, low, high, animations) {
       arr[i] = arr[j];
       arr[j] = temp;
     } else {
-      animations.push([i + 1, arr[i + 1]]);
+      animations.push([high, pivot]);
       animations.push([j, arr[j]]);
     }
   }
@@ -155,16 +155,17 @@ export function getBubbleSortAnimations(array) {
   return [animations, array];
 }
 
-
 export function getHeapSortAnimations(array, n) {
   const animations = [];
 
-  // Build heap (rearrange array) 
-  for (let i = Math.floor(n / 2); i >= 0; i = i - 1) { heapify(array, n, i, animations); }
+  // Build heap (rearrange array)
+  for (let i = Math.floor(n / 2); i >= 0; i = i - 1) {
+    heapify(array, n, i, animations);
+  }
 
-  // One by one extract an element from heap 
+  // One by one extract an element from heap
   for (let j = n - 1; j > 0; j = j - 1) {
-    // Move current root to end 
+    // Move current root to end
     //animations.push([0, i])
     animations.push([0, j]);
     animations.push([j, 0]);
@@ -174,27 +175,24 @@ export function getHeapSortAnimations(array, n) {
     array[0] = array[j];
     array[j] = temp;
 
-    // call max heapify on the reduced heap 
+    // call max heapify on the reduced heap
     heapify(array, j, 0, animations);
   }
   return [animations, array];
 }
 
-
 function heapify(array, n, i, animations) {
-  let largest = i; // Initialize largest as root 
-  let l = 2 * i + 1; // left = 2*i + 1 
-  let r = 2 * i + 2; // right = 2*i + 2 
+  let largest = i; // Initialize largest as root
+  let l = 2 * i + 1; // left = 2*i + 1
+  let r = 2 * i + 2; // right = 2*i + 2
 
-  // If left child is larger than root 
-  if (l < n && array[l] > array[largest])
-    largest = l;
+  // If left child is larger than root
+  if (l < n && array[l] > array[largest]) largest = l;
 
-  // If right child is larger than largest so far 
-  if (r < n && array[r] > array[largest])
-    largest = r;
+  // If right child is larger than largest so far
+  if (r < n && array[r] > array[largest]) largest = r;
 
-  // If largest is not root 
+  // If largest is not root
   if (!(largest == i)) {
     animations.push([largest, i]);
     animations.push([i, largest]);
@@ -204,7 +202,7 @@ function heapify(array, n, i, animations) {
     array[i] = array[largest];
     array[largest] = swap;
 
-    // Recursively heapify the affected sub-tree 
+    // Recursively heapify the affected sub-tree
     heapify(array, n, largest, animations);
   }
-} 
+}

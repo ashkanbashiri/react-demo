@@ -1,21 +1,17 @@
-import React from 'react';
+import React from "react";
 import {
   getMergeSortAnimations,
   getquickSortAnimations,
   getBubbleSortAnimations,
-  getHeapSortAnimations
-} from '../sortingAlgorithms/sortingAlgorithms.js';
-import './SortingVisualizer.css';
+  getHeapSortAnimations,
+} from "../sortingAlgorithms/sortingAlgorithms.js";
+import "./SortingVisualizer.scss";
 
-// Change this value for the speed of the animations.
-
-// Change this value for the number of bars (value) in the array.
-
-// This is the main color of the array bars.
-const PRIMARY_COLOR = 'PALETURQUOISE';
+const PRIMARY_COLOR = "#57a18b";
+const NEUTRAL_COLOR = "#0000FF";
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = 'orangered';
+const SECONDARY_COLOR = "orangered";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -25,18 +21,20 @@ export default class SortingVisualizer extends React.Component {
       array: [],
       showmsg: false,
       arr_size: 100,
-      animation_speed: 1,
+      animation_speed: 10,
       quickSortDisabled: false,
       heapSortDisabled: false,
       mergeSortDisabled: false,
       bubbleSortDisabled: false,
       sliderDisabled: false,
       resetArrayDisabled: false,
+      theme: "light",
     };
   }
 
   componentDidMount() {
     this.resetArray();
+    document.body.classList.remove("darkmode");
   }
 
   resetArray() {
@@ -45,11 +43,10 @@ export default class SortingVisualizer extends React.Component {
       array.push(randomIntFromInterval(1, 400));
     }
     this.setState({ array: array });
-    if (array.length > 100) {
-      this.setState({ animation_speed: 1 });
-    }
-    else {
-      this.setState({ animation_speed: 100.0 / (array.length) });
+    if (array.length >= 100) {
+      this.setState({ animation_speed: 10 });
+    } else {
+      this.setState({ animation_speed: 15 });
     }
   }
 
@@ -60,7 +57,7 @@ export default class SortingVisualizer extends React.Component {
       mergeSortDisabled: true,
       bubbleSortDisabled: true,
       sliderDisabled: true,
-      resetArrayDisabled: true
+      resetArrayDisabled: true,
     });
   }
   enableAll() {
@@ -70,7 +67,7 @@ export default class SortingVisualizer extends React.Component {
       mergeSortDisabled: false,
       bubbleSortDisabled: false,
       sliderDisabled: false,
-      resetArrayDisabled: false
+      resetArrayDisabled: false,
     });
   }
   mergeSort() {
@@ -78,8 +75,8 @@ export default class SortingVisualizer extends React.Component {
     this.disableAll();
     const [animations, temp] = getMergeSortAnimations(this.state.array.slice());
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      const tooltips = document.getElementsByClassName('tooltiptext');
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const tooltips = document.getElementsByClassName("tooltiptext");
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -97,21 +94,19 @@ export default class SortingVisualizer extends React.Component {
           const tooltip = tooltips[barOneIdx];
           barOneStyle.height = `${newHeight}px`;
           tooltip.innerHTML = newHeight;
-          if (i == animations.length - 1)
-            this.enableAll();
+          if (i == animations.length - 1) this.enableAll();
         }, i * this.state.animation_speed);
       }
     }
-    //this.enableAll();
   }
 
   quickSort() {
     this.disableAll();
     const [animations, temp] = getquickSortAnimations(this.state.array.slice());
-    console.log(this.state.array)
+    console.log(this.state.array);
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      const tooltips = document.getElementsByClassName('tooltiptext');
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const tooltips = document.getElementsByClassName("tooltiptext");
       const isColorChange = i % 4 < 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -129,32 +124,25 @@ export default class SortingVisualizer extends React.Component {
           const tooltip = tooltips[barOneIdx];
           barOneStyle.height = `${newHeight}px`;
           tooltip.innerHTML = newHeight;
-          if (i == animations.length - 1)
-            this.enableAll();
+          if (i == animations.length - 1) this.enableAll();
         }, i * this.state.animation_speed);
       }
     }
-    /* document.getElementById("slider").disabled = false;
-     document.getElementById("resetArray").disabled = false;
-     document.getElementById("quickSort").disabled = false;
-     document.getElementById("bubbleSort").disabled = false;
-     document.getElementById("mergeSort").disabled = false;
-     document.getElementById("heapSort").disabled = false;*/
-
   }
 
-  afterSort() {
-
-  }
+  afterSort() {}
 
   heapSort() {
     this.disableAll();
-    const [animations, temp] = getHeapSortAnimations(this.state.array, this.state.arr_size.slice());
-    console.log(this.state.array)
+    const [animations, temp] = getHeapSortAnimations(
+      this.state.array.slice(),
+      this.state.arr_size
+    );
+    console.log(this.state.array);
 
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      const tooltips = document.getElementsByClassName('tooltiptext');
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const tooltips = document.getElementsByClassName("tooltiptext");
       const isColorChange = i % 4 < 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -172,8 +160,7 @@ export default class SortingVisualizer extends React.Component {
           const tooltip = tooltips[barOneIdx];
           barOneStyle.height = `${newHeight}px`;
           tooltip.innerHTML = newHeight;
-          if (i == animations.length - 1)
-            this.enableAll();
+          if (i == animations.length - 1) this.enableAll();
         }, i * this.state.animation_speed);
       }
     }
@@ -182,11 +169,15 @@ export default class SortingVisualizer extends React.Component {
   bubbleSort() {
     this.disableAll();
     this.setState({ showmsg: true });
-    setTimeout(() => { this.setState({ showmsg: false }); }, 3000);
-    const [animations, temp] = getBubbleSortAnimations(this.state.array.slice());
+    setTimeout(() => {
+      this.setState({ showmsg: false });
+    }, 3000);
+    const [animations, temp] = getBubbleSortAnimations(
+      this.state.array.slice()
+    );
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      const tooltips = document.getElementsByClassName('tooltiptext');
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const tooltips = document.getElementsByClassName("tooltiptext");
       const isColorChange = i % 4 < 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -204,16 +195,12 @@ export default class SortingVisualizer extends React.Component {
           const tooltip = tooltips[barOneIdx];
           barOneStyle.height = `${newHeight}px`;
           tooltip.innerHTML = newHeight;
-          if (i == animations.length - 1)
-            this.enableAll();
+          if (i == animations.length - 1) this.enableAll();
         }, i * this.state.animation_speed);
       }
     }
   }
 
-  // NOTE: This method will only work if your sorting algorithms actually return
-  // the sorted arrays; if they return the animations (as they currently do), then
-  // this method will be broken.
   testSortingAlgorithms() {
     for (let i = 0; i < 100; i++) {
       const array = [];
@@ -224,13 +211,11 @@ export default class SortingVisualizer extends React.Component {
       const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
       const [tempArray3, sortedArray3] = getquickSortAnimations(array.slice());
       const [tempArray, sortedArray] = getMergeSortAnimations(array.slice());
-      const [tempArray2, sortedArray2] = getHeapSortAnimations(array.slice(), array.length);
+      const [tempArray2, sortedArray2] = getHeapSortAnimations(
+        array.slice(),
+        array.length
+      );
 
-      //console.log(arraysAreEqual(javaScriptSortedArray, sortedArray3));
-      //console.log(arraysAreEqual(javaScriptSortedArray, sortedArray));
-      //console.log(arraysAreEqual(javaScriptSortedArray, sortedArray2));
-      //console.log(array.length)
-      //console.log(sortedArray2.length)
       if (arraysAreEqual(javaScriptSortedArray, sortedArray2) == false) {
         console.log(array.slice());
         console.log(sortedArray2);
@@ -239,16 +224,14 @@ export default class SortingVisualizer extends React.Component {
   }
 
   handleSizeChange(e) {
-
     this.setState({ arr_size: e.target.value }, () => {
       const array = [];
       for (let i = 0; i < this.state.arr_size; i++) {
         array.push(randomIntFromInterval(1, 400));
       }
-      this.setState({ array: array }); console.log(this.state.arr_size)
+      this.setState({ array: array });
+      console.log(this.state.arr_size);
     });
-
-
   }
   //<div className="tooltiptext">{this.state.arr_size}</div>
 
@@ -257,64 +240,110 @@ export default class SortingVisualizer extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="grid-container">
-          <div className="header">
-            <div>
+        <div className="grid-container-sort">
+          <div className="header-sort">
+            <div className>
               <div className="input-range">
-                <p><b>Array Size: </b></p>
+                <p>
+                  <b>Array Size: </b>
+                </p>
                 <input
                   type="range"
                   min="5"
-                  max="200" data-toggle="tooltip" data-placement="left" title={this.state.arr_size}
+                  max="200"
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title={this.state.arr_size}
                   className="input-range"
                   disabled={this.state.sliderDisabled}
                   value={this.state.arr_size}
-                  onChange={e => {
+                  onChange={(e) => {
                     this.handleSizeChange(e);
                   }}
-                  id="slider" />
+                  id="slider"
+                />
               </div>
               <button
                 id="resetArray"
-                className="btn btn-dark"
+                className="btn btn-dark hvr-sweep-to-right"
                 disabled={this.state.resetArrayDisabled}
                 type="button"
-                onClick={() => this.resetArray()}>
+                onClick={() => this.resetArray()}
+              >
                 New Random List
-            </button>
+              </button>
             </div>
             <div>
-              <button id="mergeSort" disabled={this.state.mergeSortDisabled}
-                className="btn btn-info" onClick={() => this.mergeSort()}>
+              <button
+                id="mergeSort"
+                disabled={this.state.mergeSortDisabled}
+                className="btn hvr-sweep-to-right"
+                onClick={() => this.mergeSort()}
+              >
                 Merge Sort
-        </button>
+              </button>
             </div>
             <div>
-              <button id="quickSort" disabled={this.state.quickSortDisabled}
-                className="btn btn-info" onClick={() => this.quickSort()}>
+              <button
+                id="quickSort"
+                disabled={this.state.quickSortDisabled}
+                className="btn hvr-sweep-to-right"
+                onClick={() => this.quickSort()}
+              >
                 Quick Sort
-        </button>
+              </button>
             </div>
             <div>
-              <button id="heapSort" disabled={this.state.heapSortDisabled}
-                className="btn btn-info" onClick={() => this.heapSort()}>
+              <button
+                id="heapSort"
+                disabled={this.state.heapSortDisabled}
+                className="btn hvr-sweep-to-right"
+                onClick={() => this.heapSort()}
+              >
                 Heap Sort
-        </button>
+              </button>
             </div>
             <div>
-              <button id="bubbleSort" disabled={this.state.bubbleSortDisabled}
-                className="btn btn-info" onClick={() => this.bubbleSort()}>
+              <button
+                id="bubbleSort"
+                disabled={this.state.bubbleSortDisabled}
+                className="btn hvr-sweep-to-right"
+                onClick={() => this.bubbleSort()}
+              >
                 Bubble Sort
-        </button></div>
+              </button>
+            </div>
             <button
-              className="btn btn-warning"
+              className="btn"
               style={{ display: "None" }}
-              onClick={() => this.testSortingAlgorithms()}>
+              onClick={() => this.testSortingAlgorithms()}
+            >
               Test
-        </button>
+            </button>
           </div>
-          <div className="middle">
-            <div id="bars" style={{ position: "relative" }}>
+          <div className="middle-sort">
+            <h1
+              style={{
+                fontFamily: `Montserrat, sans-serif`,
+                background: `transparent`,
+                fontSize: `14px`,
+                margin: `0.4em 0`,
+              }}
+            >
+              Technologies:
+              <span
+                className="txt-rotate"
+                data-period="1000"
+                data-rotate='[ " HTML5", " CSS3", " React", " Javascript" ]'
+              ></span>
+            </h1>
+            <div
+              id="bars"
+              style={{
+                position: "relative",
+                height: "100%",
+              }}
+            >
               {array.map((value, idx) => (
                 <div
                   className="array-bar"
@@ -322,37 +351,44 @@ export default class SortingVisualizer extends React.Component {
                   style={{
                     backgroundColor: PRIMARY_COLOR,
                     height: `${value}px`,
-                  }}>
+                    width: `5px`,
+                    margin: `0px 1px`,
+                    overflow: `hidden`,
+                  }}
+                >
                   <div className="tooltiptext">{value}</div>
-
                 </div>
-
               ))}
-              <hr></hr>
             </div>
+
             <div
               id="msg"
               style={{
-                display: this.state.showmsg ? 'block' : 'None',
+                display: this.state.showmsg ? "block" : "None",
                 position: `fixed`,
                 width: `500px`,
                 height: `100px`,
                 top: `50%`,
                 left: `50%`,
                 color: `gray`,
-                fontWeight: 'bold',
-                backgroundColor: 'cyan',
-                textAlign: 'center',
+                fontWeight: "bold",
+                backgroundColor: "#fff",
+                textAlign: "center",
                 marginTop: `-100px`,
                 marginLeft: `-250px`,
-              }}>
+              }}
+            >
               SPOILERS! BubbleSort is a bit slow --> O(N^2)
-        </div>
+            </div>
           </div>
-
         </div>
         <div className="footer">
-          <p><b>Visualizing Sorting Algorithms, Developed with React Framework.  Written by Ashkan Bashiri.</b></p>
+          <p>
+            <b>
+              Visualizing Sorting Algorithms, Developed with React Framework.
+              Written by Ashkan Bashiri.
+            </b>
+          </p>
         </div>
       </React.Fragment>
     );

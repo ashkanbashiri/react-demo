@@ -1,0 +1,69 @@
+h1 a:hover {
+  color: rgb(255, 182, 160);
+}
+.aStyle:hover {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.my-class {
+  background: #333;
+  color: rgb(255, 245, 245);
+  text-align: center;
+  padding: 1px;
+  letter-spacing: 0.1em;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #3cb371;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  &:hover {
+    color: white;
+  }
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}
+.active-link {
+  background: #333;
+  color: orangered;
+  text-align: center;
+  padding: 1px;
+  letter-spacing: 0.1em;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #3cb371;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  &:hover {
+    color: white;
+  }
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}

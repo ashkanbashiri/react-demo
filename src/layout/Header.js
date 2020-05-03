@@ -1,28 +1,76 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Header.scss";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
-    <header style={headerStyle}>
-      <h1>Ashkan's React App</h1>
-      <Link style={linkStyle} to="/react-demo">Sorting-Visualizer </Link>
-      | <Link style={linkStyle} to="/react-demo/ml">Traffic Control </Link>
-      | <Link style={linkStyle} to="/react-demo/ml">Image Classification </Link>
-      | <Link style={linkStyle} to="/react-demo/ml">DataScience Projects </Link>
-    </header>
-  )
+    <React.Fragment>
+      <div id="particles-js"></div>
+      <header style={headerStyle}>
+        <h1>
+          <NavLink className="my-class" to="/">
+            Ashkan's React Application
+          </NavLink>
+        </h1>
+        <NavLink className="my-class" activeClassName="active-link" to="/sv">
+          Sorting-Visualizer{" "}
+        </NavLink>
+        |{" "}
+        <NavLink
+          className="my-class"
+          activeClassName="active-link"
+          to="/covid_summary"
+        >
+          Covid19-Summary{" "}
+        </NavLink>
+        |{" "}
+        <NavLink
+          className="my-class"
+          activeClassName="active-link"
+          to="/covid19"
+        >
+          Covid19-Daily{" "}
+        </NavLink>
+        |{" "}
+        <NavLink className="my-class" activeClassName="active-link" to="/ml">
+          DataScience Projects{" "}
+        </NavLink>
+      </header>
+    </React.Fragment>
+  );
 }
 
 const headerStyle = {
-  background: '#333',
-  color: '#fff',
-  textAlign: 'center',
-  padding: '10px'
-}
+  background: "#333",
+  color: "#fff",
+  textAlign: "center",
+  padding: "10px",
+};
 
 const linkStyle = {
-  color: '#fff',
-  textDecoration: 'none'
-}
+  textDecoration: "none",
+  ":hover": {
+    textDecoration: "underline",
+    fontWeight: "Bold",
+  },
+  ":active": {
+    textDecoration: "underline",
+    fontWeight: "Bold",
+    color: "Blue",
+  },
+};
+const aStyle = {
+  color: "#fff",
+  textDecoration: "none",
+  ":hover": {
+    textDecoration: "underline",
+    color: "Blue",
+  },
+  ":active": {
+    textDecoration: "underline",
+    fontWeight: "Bold",
+    color: "Blue",
+  },
+};
 
 export default Header;

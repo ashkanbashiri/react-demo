@@ -1,0 +1,65 @@
+.grid-container {
+  min-height: calc(100vh - 70px);
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "label selector1 selector2"
+    "left middle right"
+    "footer footer footer ";
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr 2fr 1fr;
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.left,
+.middle,
+.right {
+  padding: 5px;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.footer {
+  grid-area: footer;
+}
+.selector1 {
+  grid-area: selector1;
+
+  cursor: pointer;
+}
+.selector2 {
+  grid-area: selector2;
+
+  cursor: pointer;
+}
+.label {
+  grid-area: label;
+  bottom: 0;
+}
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+  min-height: 60vh;
+  min-width: 60vw;
+  max-width: 80vw;
+  background: white;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+.country-btn {
+  width: 50px;
+}
+
+.select-label {
+  display: inline-block;
+}
+.chart {
+  width: 500px;
+  background-color: blanchedalmond;
+}
