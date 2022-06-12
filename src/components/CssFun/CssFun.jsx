@@ -17,14 +17,14 @@ export default class CssFun extends React.Component {
             <h2>Neon Text with CSS:</h2>
             <div className="wrapper">
               <div className=" neon-wrapper">
-                <div className="neon-text">ASHKAN BASHIRI</div>
+                <div className="neon-text">CSS IS FUN !</div>
               </div>
             </div>
             <div className="separator"></div>
             <h2>Neumorphism Example:</h2>
             <div className="login-div">
               <div className="logo"></div>
-              <div className="title">Login </div>
+              <div className="title">Fake Login :) </div>
               <div className="sub-title">try to remember your password</div>
               <div className="fields">
                 <div className="username">
