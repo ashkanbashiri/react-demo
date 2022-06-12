@@ -17,7 +17,7 @@ export default class CssFun extends React.Component {
             <h2>Neon Text with CSS:</h2>
             <div className="wrapper">
               <div className=" neon-wrapper">
-                <div className="neon-text">MASOUD BASHIRI</div>
+                <div className="neon-text">ASHKAN BASHIRI</div>
               </div>
             </div>
             <div className="separator"></div>

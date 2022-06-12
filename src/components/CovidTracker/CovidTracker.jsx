@@ -18,6 +18,7 @@ export default class CovidTracker extends React.Component {
 
     this.state = {
       isLoading: false,
+      error: false,
       summary: [],
       countries: [],
       country_data: [],
@@ -228,8 +229,11 @@ export default class CovidTracker extends React.Component {
         this.setState({ options });
         this.setState({ countries });
         this.setState({ country_data });
+        this.setState({ error: false });
         this.setState({ isLoading: false });
         console.log(country_data);
+      }).catch((error) => {
+        this.setState({ error: true });
       });
   }
 
@@ -238,6 +242,9 @@ export default class CovidTracker extends React.Component {
   }
 
   render() {
+    if (this.state.error) {
+      return <p>Error retrieving data from API</p>;
+    }
     if (this.state.isLoading) {
       return <p>Fetching Covid-19 data...</p>;
     }
